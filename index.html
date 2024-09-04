@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda de Camperas</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="./imagenes/Logo.jpg" type="image/x-icon">
+    <script src="https://kit.fontawesome.com/458d067753.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body>
+    <header>
+
+        <div class="logo">
+            <img src="./imagenes/Logo.jpg" alt="Mi Tienda" width="10%">
+        </div>
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
+        <nav id="navMenu">
+            <ul>
+                <li><a href="#carouselExampleInterval">Inicio</a></li>
+                <li><a href="#productos">Productos</a></li>
+                <li><a href="#carrito-items">Carrito</a></li>
+                <li><a href="#redes">Contacto</a></li>
+            </ul>
+        </nav>
+        <input type="text" id="search" placeholder="Buscar">
+    </header>
+   
+    <main >
+        <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active" data-bs-interval="10000">
+                    <img src="./imagenes/Jake negra.jpg" class="d-block w-100" alt="Jake black">
+                </div>
+            <div class="carousel-item" data-bs-interval="2000">
+                <img src="./imagenes/Campera Universitaria.jpg" class="d-block w-100" alt="campera Universitaria">
+            </div>
+            <div class="carousel-item">
+                <img src="./imagenes/Rompeviento.jpg" class="d-block w-100" alt="Rompeviento">
+            </div>
+        </div>
+    </div>
+    
+    <section class="descripcion">
+        <h2>Bienvenidos a nuestra tienda de camperas</h2>
+        <p>Encuentra la mejor selección de camperas para cualquier ocasión.</p>
+    </section>
+        
+    <section class="productos" id="productos">
+        <div class="producto">
+            <h3>melamina</h3>
+            <img src="./imagenes/Campera extremety.jpg" alt="melamina">
+            <p>Mueble de Melamina</p>
+            <p>Precio: 50.000</p>
+            <button onclick="agregarAlCarrito('Campera extremety', 50.000, './imagenes/Campera extremety.jpg')">Comprar</button>
+        </div>
+        <div class="producto">
+            <h3>Campera Roja</h3>
+            <img src="./imagenes/Campera Jens.jpg" alt="Repisa minimalista">
+            <p>Repisa minimalista</p>
+            <p>Precio: 60.000</p>
+            <button
+            onclick="agregarAlCarrito('campera jens', 60.000, './imagenes/Campera Jens.jpg')">Comprar</button>
+        </div>
+        <div class="producto">
+            <h3>Repisa </h3>
+            <img src="./imagenes/Jake negra.jpg" alt="repisa1">
+            <p>Repisa de baño </p>
+            <p>Precio: 25.000</p>
+            <button onclick="agregarAlCarrito('Jake negra', 25.000, './imagenes/Jake negra.jpg')">Comprar</button>
+        </div>
+        <div class="producto">
+            <h3>Prueba</h3>
+            <img src="./imagenes/Logo.jpg" alt="Prueba">
+            <p>Logo</p>
+            <p>Precio: 2.000</p>
+            <button onclick="agregarAlCarrito('Prueba', 2.000, './imagenes/Logo.jpg')">Comprar</button>
+        </div>
+        
+        <div class="producto">
+            <h3>Campera Negra</h3>
+            <img src="./imagenes/Rompeviento.jpg" alt="Campera Negra">
+            <p>Descripción de la campera negra.</p>
+            <p>Precio: 50.000</p>
+            <button onclick="agregarAlCarrito('Campera Negra', 50.000, './imagenes/melamina.jpg')">Comprar</button>
+        </div>
+        <div class="producto">
+            <h3>Campera Roja</h3>
+            <img src="./imagenes/Buzo blanco.jpg" alt="Campera Roja">
+            <p>Descripción de la campera roja.</p>
+            <p>Precio: 60.000</p>
+            <button
+            onclick="agregarAlCarrito('Campera Roja', 60.000, './imagenes/Repisa minimalista.jpg')">Comprar</button>
+        </div>
+        <div class="producto">
+            <h3>Campera Negra</h3>
+            <img src="./imagenes/Campera extremety.jpg" alt="Campera Negra">
+            <p>Descripción de la campera negra.</p>
+            <p>Precio: 25.000</p>
+            <button onclick="agregarAlCarrito('Campera Negra', 25.000, './imagenes/repisa1.jpg')">Comprar</button>
+        </div>
+        <div class="producto">
+            <h3>Campera Roja</h3>
+            <img src="./imagenes/Logo.jpg" alt="Campera Roja">
+            <p>Descripción de la campera roja.</p>
+            <p>Precio: 2.000</p>
+            <button onclick="agregarAlCarrito('Campera Roja', 2.000, './imagenes/Logo.jpg')">Comprar</button>
+        </div>
+        <div class="producto">
+            <h3>Campera Negra</h3>
+            <img src="./imagenes/Campera Universitaria.jpg" alt="Campera Negra">
+            <p>Descripción de la campera negra.</p>
+            <p>Precio: 50.000</p>
+            <button onclick="agregarAlCarrito('Campera Negra', 50.000, './imagenes/melamina.jpg')">Comprar</button>
+        </div>
+        
+        <!-- Agrega más productos aquí -->
+    </section>
+    
+    <section class="carrito">
+        <h2>Carrito de Compras</h2>
+        <div id="carrito-items"></div>
+        <p>Total:<span id="total-precio">0</span></p>
+        <button id="vaciar-carrito" onclick="vaciarCarrito()">Vaciar Carrito</button>
+        <button id="finalizar-compra" onclick="mostrarFormulario()">Finalizar Compra</button>
+    </section>
+    
+    <div id="formulario-compra" class="formulario-compra">
+        <h2>Finalizar Compra</h2>
+        <form id="compraForm" action="https://formspree.io/f/mblraezd" method="POST">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+            
+            <label for="telefono">Teléfono:</label>
+            <input type="tel" id="telefono" name="telefono" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+    
+    <footer>
+        <p>Síguenos en nuestras redes sociales</p>
+        <div class="social-links" id="redes">
+            <i class="fa-brands fa-facebook fa-xl" style="color: #74C0FC;"></i> Facebook
+            <i class="fa-brands fa-instagram fa-xl" style="color: #ff9924;"></i> Instagram
+            <i class="fa-brands fa-twitter fa-xl" style="color: #74C0FC;"></i> Twitter
+            <i class="fa-brands fa-whatsapp fa-xl" style="color: #63E6BE;"></i> 1134984283
+        </div>
+    </footer>
+    
+    <script src="script.js"></script>
+</body>
+
+</html>
